@@ -6,7 +6,7 @@ logLevel := Level.Warn
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 //resolvers += Resolver.url("Typesafe Ivy", url("http://repo.typesafe.com/typesafe/ivy-snapshots"))(Resolver.ivyStylePatterns)
-resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/com/typesafe/jse_2.10/1.0.0/"
+resolvers += "Typesafe repository jse" at "http://repo.typesafe.com/typesafe/releases/com/typesafe/jse_2.10/1.0.0/"
 
 // Use the Play sbt plugin for Play projects
 //addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.4")

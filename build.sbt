@@ -28,7 +28,8 @@ libraryDependencies ++= Seq(
   "com.typesafe" %% "webdriver" % "1.0.0",
 /*  "com.typesafe" %% "jse" % "1.0.0",
   "com.typesafe" %% "npm" % "1.0.0",*/
-  "org.webjars" % "bootstrap" % "3.3.6"
+  "org.webjars" % "bootstrap" % "3.3.6",
+  "org.postgresql" % "postgresql" % "9.4-1201-jdbc41"
 )
 
 //This will cause no conf directory to be created in the distribution.

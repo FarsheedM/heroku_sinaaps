@@ -26,8 +26,8 @@ libraryDependencies ++= Seq(
   "com.cloudinary" % "cloudinary-http42" % "1.2.1",
   "org.json" % "json" % "20150729",
   "com.typesafe" %% "webdriver" % "1.0.0",
-  "com.typesafe" %% "jse" % "1.0.0",
-  "com.typesafe" %% "npm" % "1.0.0",
+/*  "com.typesafe" %% "jse" % "1.0.0",
+  "com.typesafe" %% "npm" % "1.0.0",*/
   "org.webjars" % "bootstrap" % "3.3.6"
 )
 

@@ -16,7 +16,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.analytics.Analytics;
 import com.google.api.services.analytics.AnalyticsScopes;
 import com.google.api.services.analytics.model.GaData;
-import com.typesafe.plugin.*;
+//import com.typesafe.plugin.*;
 
 import models.*;
 import play.*;

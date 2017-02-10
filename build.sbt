@@ -15,7 +15,6 @@ libraryDependencies ++= Seq(
   cache,
   javaJpa,
   evolutions,
-  "com.typesafe" % "play-plugins-mailer_2.9.1" % "2.0.4",
   "mysql" % "mysql-connector-java" % "5.1.29",
   "org.hibernate" % "hibernate-entitymanager" % "4.3.5.Final",
   "com.cloudinary" % "cloudinary" % "1.0.8",

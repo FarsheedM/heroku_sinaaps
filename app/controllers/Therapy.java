@@ -2,8 +2,8 @@ package controllers;
 
 import org.joda.time.DateTime;
 
-import com.typesafe.plugin.MailerAPI;
-import com.typesafe.plugin.MailerPlugin;
+//import com.typesafe.plugin.MailerAPI;
+//import com.typesafe.plugin.MailerPlugin;
 
 import controllers.About.FeedBack;
 import play.data.Form;
@@ -60,12 +60,12 @@ public class Therapy extends Controller{
 	    			return badRequest(views.html.alert.render(usr,"Your message has not been sent! Please Try again!"));
 			} else {
 				
-			    MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
+/*			    MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 			    mail.setSubject(feedBackForm.get().subject);
 			    mail.addRecipient("farsireads@gmail.com");
 			    mail.addFrom(usr.email);
 			    mail.send("A text only message", "<html><body><p>sent by <b>"+usr.lName+"-"+usr.fName+
-			    		"</b><br>"+feedBackForm.get().feedback+"</p></body></html>" );
+			    		"</b><br>"+feedBackForm.get().feedback+"</p></body></html>" );*/
 			}
 		}
 		catch(Exception ex){

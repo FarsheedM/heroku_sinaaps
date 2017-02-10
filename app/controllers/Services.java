@@ -2,8 +2,8 @@ package controllers;
 
 import java.util.List;
 
-import com.typesafe.plugin.MailerAPI;
-import com.typesafe.plugin.MailerPlugin;
+//import com.typesafe.plugin.MailerAPI;
+//import com.typesafe.plugin.MailerPlugin;
 
 import controllers.About.FeedBack;
 import models.Book;
@@ -61,12 +61,12 @@ public class Services extends Controller{
 	    			return badRequest(views.html.alert.render(usr,"Your message has not been sent! Please Try again!"));
 			} else {
 				
-			    MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
+/*			    MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 			    mail.setSubject(feedBackForm.get().subject);
 			    mail.addRecipient("farsireads@gmail.com");
 			    mail.addFrom(feedBackForm.get().email);
 			    mail.send("A text only message", "<html><body><p>sent by <b>"+feedBackForm.get().name+
-			    		"</b><br>"+feedBackForm.get().message+"</p></body></html>" );
+			    		"</b><br>"+feedBackForm.get().message+"</p></body></html>" );*/
 				
 			}
 

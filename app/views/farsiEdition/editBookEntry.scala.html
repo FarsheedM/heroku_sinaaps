@@ -1,0 +1,89 @@
+@(user : User , library : Library, bookEntry : BookEntry, entryEditForm : Form[models.BookEntry])
+@import helper._
+@bookName = @{BookTranslation.getBookDetails(bookEntry.book.bookID,"farsi")}
+@isAdmin = @{LocalLibraryAdmin.isAdmin(user)}
+
+@headfill = {
+
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/logged.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/editBookEntry.css")">
+}
+
+@farsiEdition.FaMain(library.name)(headfill){
+
+    <div id="socialBar1">
+
+    @if(user.fName == "Guest"){
+    <div id="socialBarRightFarsi">
+        <ul id="SNIcons">
+            <li><a><img src="@routes.Assets.at("images/icons/home.png")" alt="home" width="20px" height="20px"></a></li>
+            <li><a><img src="@routes.Assets.at("images/icons/friends.png")" alt="friends" width="20px" height="20px"></a></li>
+            <li><a><img src="@routes.Assets.at("images/icons/message.png")" alt="message" width="20px" height="20px"></a></li>
+            <li><a><img src="@routes.Assets.at("images/icons/notification.png")" alt="notification" width="20px" height="20px"></a></li>
+            <li><a><img src="@routes.Assets.at("images/icons/profile.png")" alt="profile" width="20px" height="20px"></a></li>
+            <li><a><img src="@routes.Assets.at("images/icons/settings.png")" alt="settings" width="20px" height="20px"></a></li>
+        </ul>
+    </div><!-- socialBarRightFarsi -->
+    } else {
+    <div id="socialBarRightFarsi">
+        <ul id="SNIcons">
+            <li><a href="@routes.Application.loggedIn(0)"><img src="@routes.Assets.at("images/icons/home.png")" alt="home" width="20px" height="20px"></a></li>
+            <li><a href="@routes.Settings.showFriends("farsi",user.email)"><img src="@routes.Assets.at("images/icons/friends.png")" alt="friends" width="20px" height="20px"></a></li>
+            <li><a href="#"><img src="@routes.Assets.at("images/icons/message.png")" alt="message" width="20px" height="20px"></a></li>
+            <li><a href="#"><img src="@routes.Assets.at("images/icons/notification.png")" alt="notification" width="20px" height="20px"></a></li>
+            <li><a href="@routes.Settings.showProfile("farsi", user.email)"><img src="@routes.Assets.at("images/icons/profile.png")" alt="profile" width="20px" height="20px"></a></li>
+            <li><a href="@routes.Settings.showSettings("farsi")"><img src="@routes.Assets.at("images/icons/settings.png")" alt="settings" width="20px" height="20px"></a></li>
+        </ul>
+    </div><!-- socialBarRightFarsi -->
+    }
+
+
+    <div id="socialBarLeftFarsi">
+        <header id="socializingMenu">
+            <dl id="userFarsi">
+
+                @if(user.fName != "Guest"){
+                <dt> @user.fName <span>@user.email</span></dt>
+                <dd><a href="@routes.Application.logout">خروج</a></dd>
+                } else {
+                <dt>وضعیت کاربر : <span>مهمان</span></dt>
+                <dd><a href="@controllers.controllersFarsi.routes.ApplicationFa.index"> ورود </a></dd>
+                }
+            </dl>
+        </header>
+    </div><!-- socialBarLeftFarsi (loggedIn) -->
+</div><!-- socialBar -->
+
+}{
+    <!-- The Left Panel -->
+
+    @form(action = controllers.routes.LocalLibrary.updateBookEntry(), 'enctype -> "multipart/form-data"){
+
+        Tag : <input type="text" name="bookTage" id="bookTage" value="@bookEntry.bookTage" size="30" readonly>
+        ISBN : <input type="text" name="isbn" id="isbn" value="@bookEntry.book.isbn" size="30" readonly><br>
+        Book's Name : <input type="text" name="BookName" id="bookName" value="@bookName.title" size="30" readonly><br>
+        @if(bookEntry.borrowedBy != null){
+            Client : <input type="text" name="lname" id="lname" value="@bookEntry.borrowedBy.lName" size="30" readonly>
+            <input type="text" name="fname" id="fname" value="@bookEntry.borrowedBy.fName" size="30" readonly><br>
+            <input type="email" name="borrowed_by" id="borrowedBy" value="@bookEntry.borrowedBy.email" size="30"><br>
+        } else {
+            Client : <input type="text" name="lname" id="lname" value="" size="30" readonly>
+            <input type="text" name="fname" id="fname" value="" size="30" readonly><br>
+            <input type="email" name="borrowed_by" id="borrowedBy" value="" size="30"><br>
+        }
+
+
+        Book's Address : <input type="text" name="address" id="address" value="@bookEntry.address" placeholder="address" size="30">
+        <input type="tel" name="cellphone" id="cellphone" value="@bookEntry.cellphone" placeholder="cellphone" size="30"><br>
+        Borrow Date : <input type="date" name="borrowedOn" id="borrowedOn" value="@bookEntry.borrowedOn.format("yyyy-MM-dd")" size="30">
+        <input type="checkbox" name="deposit" id="deposit" size="30"> deposite
+        <input type="hidden" name="bk" id="book"  value="@bookEntry.book.bookID">
+        <input type="hidden" name="lib_id" id="library_id"  value="@library.libraryId">
+        <br>
+        <input type="submit" value="add book entry" id="submitBtn">
+
+    }
+
+}{
+<!-- The right Panel -->
+}

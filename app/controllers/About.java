@@ -2,8 +2,8 @@ package controllers;
 
 import org.h2.engine.Session;
 
-import com.typesafe.plugin.MailerAPI;
-import com.typesafe.plugin.MailerPlugin;
+//import com.typesafe.plugin.MailerAPI;
+//import com.typesafe.plugin.MailerPlugin;
 
 import controllers.Application.Login;
 import play.data.Form;
@@ -46,7 +46,7 @@ public class About extends Controller{
 	//NOTE: the alert view is used but the if else should be implemented along with
 	//the english version of alert view!
 	public static Result sendFeedBack(String lang){
-		
+
 		User usr;
 		User guest = new User("Guest","dummyEmail","dummyPassword");
 		if(session().containsKey("email"))
@@ -54,7 +54,7 @@ public class About extends Controller{
 		else
 			usr = guest;
 		
-		try{
+	/*	try{
 			Form<FeedBack> feedBackForm = Form.form(FeedBack.class).bindFromRequest();
 			
 	    	if(feedBackForm.hasErrors()){
@@ -78,6 +78,7 @@ public class About extends Controller{
 		catch(Exception ex){
 			System.err.println(ex.getMessage());
 		}
+*/
 		if(lang.equals("farsi"))
 			return ok(views.html.farsiEdition.alert.render(usr,"سپاس، پیام شما با موفقیت فرستاده شد. بزودی پیگیری خواهد شد."));
 		else

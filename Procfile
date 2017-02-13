@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/sinaaps -Dhttp.port=${PORT} -Dplay.evolutions.db.default.autoApply=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${postgres://gzocizyjpqekoc:57cbf987c2f1e5bda337e217edba45a7eb5609e3fe10b9c82eb93f5522d5df78@ec2-54-163-246-165.compute-1.amazonaws.com:5432/d4dpad7ehvviph}
+web: target/universal/stage/bin/sinaaps -Dhttp.port=${PORT} -Dplay.evolutions.db.default.autoApply=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}

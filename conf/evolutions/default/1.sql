@@ -38,7 +38,19 @@ create table author(author_id int,  email varchar(50), photo varchar(300),primar
 create table author_translation(id int, author_id int,language varchar(50),f_name nvarchar(50),
  l_name nvarchar(50),description nvarchar(2000),born nvarchar(50), gender nvarchar(50), primary key (id), foreign key (author_id) references author (author_id));
 
-create table blog_post(post_id int,title varchar(100), content  LongText,image  varchar(300),author_id int,topic  varchar(100),language  varchar(50),published timestamp,aux_img1 varchar(300),aux_img2 varchar(300),primary key (post_id), foreign key (author_id) references author (author_id));
+create table blog_post(
+post_id int,
+title varchar(100),
+content  LongText,
+image  varchar(300),
+author_id int,
+topic  varchar(100),
+language  varchar(50),
+published timestamp,
+aux_img1 varchar(300),
+aux_img2 varchar(300),
+primary key (post_id),
+foreign key (author_id) references author (author_id));
 
 
 

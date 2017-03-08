@@ -1,4 +1,4 @@
-sinaaps
+heroku_sinaaps
 =======
 
 Sinaaps project By FarMo 

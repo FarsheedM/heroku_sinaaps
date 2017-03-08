@@ -19,7 +19,7 @@ In defining the foreign key, the referencing field should be defined explicitly,
 
 use sinaaps;
 
-create table user (
+create table user(
 email varchar(255),
 f_name varchar(255),
 l_name varchar(255),
@@ -131,9 +131,9 @@ user2_email varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci,
 status int,
 actionuser_email varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci,
 primary key (relationship_id),
-foreign key (user1_email) references  user (email),
-foreign key (user2_email) references  user (email),
-foreign key (actionuser_email) references  user (email)
+foreign key (user1_email) references user (email),
+foreign key (user2_email) references user (email),
+foreign key (actionuser_email) references user (email)
 );
 
 create table activity(
@@ -147,15 +147,15 @@ create table activity(
 	source_url varchar(255),
 	published timestamp,
 	primary key (id),
-	foreign key (user_email) references  user (email)
+	foreign key (user_email) references user (email)
 );
 create table activity_stream_list(
 	id int NOT NULL AUTO_INCREMENT,
 	user_email varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci, 
 	activity_id bigint, 
 	primary key (id),
-	foreign key (user_email) references  user (email),
-	foreign key (activity_id) references  activity (id)
+	foreign key (user_email) references user (email),
+	foreign key (activity_id) references activity (id)
 );
 
 
@@ -172,8 +172,8 @@ create table local_library_admin(
 	admin_id int NOT NULL AUTO_INCREMENT,
 	admin_email varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci,
 	library_id int,
-	foreign key (admin_email) references  user (email),
-	foreign key (library_id) references  library (library_id),
+	foreign key (admin_email) references user (email),
+	foreign key (library_id) references library (library_id),
 	primary key (admin_id)
 );
 
@@ -187,8 +187,8 @@ create table book_entry(
 	deposit boolean,
 	library_id int default null,
 	foreign key (book_id) references  book (book_id),
-	foreign key (borrowed_by) references  user (email),
-	foreign key (library_id) references  library (library_id),
+	foreign key (borrowed_by) references user (email),
+	foreign key (library_id) references library (library_id),
 	primary key (book_tage)
 );
 

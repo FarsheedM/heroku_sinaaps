@@ -1,14 +1,12 @@
-
-
 @(user : User, currentPage: com.avaje.ebean.PagedList[BlogPost])
 
 @*The following declares a local variable "author" and by calling a static function
-  from AuthorTranslation class, it assigns the author of latest post(currentPage.getList.head) in it.*@
+from AuthorTranslation class, it assigns the author of latest post(currentPage.getList.head) in it.*@
 @author =  @{AuthorTranslation.getAuthor(currentPage.getList.head.author.authorID,"farsi")}
 
 @link(newPage:Int) = @{
-    // Generate the link
-    routes.Blog.display("farsi",newPage)
+// Generate the link
+routes.Blog.display("farsi",newPage)
 }
 
 
@@ -76,14 +74,15 @@
 }{
 	<!--  left content for Blog -->
 	
-	<!-- The featured box is not going to include only the latest but the "most needed" post -->
-	<div id="featuredBoxFarsi">
-	
-		
+
+<!-- The featured box is not going to include only the latest but the "most needed" post -->
+<div id="featuredBoxFarsi">
+
+
 		<!-- for now, the first version, featured Box displays the latest post,
 			 but a function in the Blog.java should be written like setFeaturedPost(title)
 			 in order to be called from a CMS, which in turn also should be written soon.-->
-		<a href="@routes.Blog.showBlogPostFullContent((currentPage.getList.head).language,(currentPage.getList.head).postID)">   
+		<a href="@routes.Blog.showBlogPostFullContent((currentPage.getList.head).language,(currentPage.getList.head).postID)">
 			<img src="@currentPage.getList.head.image" rel="@currentPage.getList.head.title">
 		</a>
 			<hgroup>
@@ -92,13 +91,13 @@
 			    </h2>
 				<h4>@author.fName @author.lName</h4>
 			</hgroup>
-		
+
 	</div>
-	
+
 	<div id="featureBoxLine" class="line"></div>
-	
+
 	<section id="postList">
-		
+
 			<!-- 'currentPage.getList' is the list of all the posts and by apply the 'tail' function
 				 the list includes the post except the most recent one which is already placed in the
 				 featuredBox.  -->
@@ -120,38 +119,48 @@
 					var crp = document.getElementById("featureBoxLine");
 					crp.style.display = "none";
 			</script>
-		}
+    }
 
-					
-					
-					
-<!-- OLD Implementation without pagination -->
-<!-- The scala tail func returns all elements of the list posts, except the first one(head) -->
-<!-- 	@@posts.tail.map{ post => 
-			@@views.html.farsiEdition.blogPost(post)
-} -->			
-	</section>
-	
-	<!-- here is the pagination bar -->
-	<div id="pagination" class="pagination">
-		<ul>
-			@if(currentPage.hasPrev) {
-			<li class="prev">
-				<a href="@link(currentPage.getPageIndex - 1)">&larr; صفحه قبلی‌</a>
-			</li> } else {
-			<li class="prev disabled"><a>&larr; صفحه قبلی‌</a></li> 
-			}
-			<li class="current"><a>نمایش پستهای
-					@currentPage.getDisplayXtoYofZ(" تا "," از ")</a></li>
-			@if(currentPage.hasNext) {
-			<li class="next"><a
-				href="@link(currentPage.getPageIndex + 1)">صفحه بعدی &rarr;</a></li> 
-			} else {
-				<li class="next disabled"><a>صفحه بعدی &rarr;</a></li> 
-			}
-		</ul>
-		
-	</div>
+
+
+
+    <!-- OLD Implementation without pagination -->
+    <!-- The scala tail func returns all elements of the list posts, except the first one(head) -->
+    <!-- 	@@posts.tail.map{ post =>
+                @@views.html.farsiEdition.blogPost(post)
+    } -->
+    </section>
+
+    <!-- here is the pagination bar -->
+    <div id="pagination" class="pagination">
+        <ul>
+            @if(currentPage.hasPrev) {
+            <li class="prev">
+                <a href="@link(currentPage.getPageIndex - 1)">&larr; صفحه قبلی‌</a>
+            </li> } else {
+            <li class="prev disabled"><a>&larr; صفحه قبلی‌</a></li>
+            }
+            <li class="current"><a>نمایش پستهای
+                @currentPage.getDisplayXtoYofZ(" تا "," از ")</a></li>
+            @if(currentPage.hasNext) {
+            <li class="next"><a
+                    href="@link(currentPage.getPageIndex + 1)">صفحه بعدی &rarr;</a></li>
+            } else {
+            <li class="next disabled"><a>صفحه بعدی &rarr;</a></li>
+            }
+        </ul>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
 
 }{
 	

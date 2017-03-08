@@ -78,15 +78,12 @@ public class BlogPost extends Model{
                 .getPage(page);
     }*/
 
-	public static PagedList<BlogPost> page(int page, int pageSize, String sortBy, String order, String filter, User user) {
+	public static PagedList<BlogPost> page(int page, int pageSize, String sortBy, String order, String filter) {
 		return
 				find.where()
-						.eq("user", user)
+						.eq("language","farsi")
 						.orderBy(sortBy + " " + order)
-						.fetch("published")
-						.findPagedList(page, pageSize);
+						.findPagedList(page,pageSize);
 	}
-
-    
 
 }

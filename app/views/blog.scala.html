@@ -56,8 +56,8 @@
 	
 	<section id="postList">
 			
-					@currentPage.getList.map{ post => 
-							@views.html.blogPost(post)
+					@@currentPage.getList.map{ post =>
+							@@views.html.blogPost(post)
 					}
 			
 	</section>

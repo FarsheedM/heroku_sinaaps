@@ -22,36 +22,35 @@ public class Blog extends Controller{
 	//queries the BlogPost model(DB) to select only the posts in the 
 	//specified language.
 	public static Result display(String lang,int page){
-		
+
+		com.avaje.ebean.PagedList<BlogPost> bp =
+				BlogPost.page(page, 10, "published", "asc", "");
+
 		if(lang.equals("english")){
 			if(session().containsKey("email"))
 				return ok(views.html.blog.render(User.find.byId(session().get("email")),
-						BlogPost.page(page, 5, "published", "asc", "",
-								User.find.byId(session().get("email")))));
+						bp));
 			else{
 				User guest = new User("Guest","dummyEmail","dummyPassword");
 				return ok(views.html.blog.render(guest,
-						BlogPost.page(page, 5, "published", "asc", "",
-								User.find.byId(session().get("email")))));
+						bp));
 			}
 		}
 		else if(lang.equals("farsi")){
+
 			if(session().containsKey("email"))
-				return ok(views.html.farsiEdition.blog.render(User.find.byId(session().get("email")),
-						BlogPost.page(page, 3, "published", "asc", "",
-								User.find.byId(session().get("email")))));
+				return ok(views.html.farsiEdition.blog.render(User.find.byId(session().get("email")), bp));
 			else{
 				User guest = new User("Guest","dummyEmail","dummyPassword");
 				return ok(views.html.farsiEdition.blog.render(guest,
-						BlogPost.page(page, 3, "published", "asc", "",
-								User.find.byId(session().get("email")))));
+						bp));
 			}
 		}
 		else{
 			//if neither english nor farsi is selected
 			return badRequest("خطا: مطالب وبسایت به زبان وارد شده در دسترس نیست! لطفا زبان فارسی و یا انگلیسی‌ را انتخاب کنید.");
 		}
-		
+
 	}
 	
 	/*this method gets the list of all BlogPost in specified language. please note that

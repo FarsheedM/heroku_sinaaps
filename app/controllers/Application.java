@@ -156,7 +156,7 @@ public class Application extends Controller {
         String apiEmail = "900722495917-a4sf0839avupub5n7sbag5ookufgbr68@developer.gserviceaccount.com";
         
          /* In the developer console:
-         * create new ClientID ->service account and save the privateKey.p12 somewhere
+         *  create new ClientID ->service account and save the privateKey.p12 somewhere
          */
         
         File analyticsPrivateKeyFile = new File("/public/images/key.p12.p12");

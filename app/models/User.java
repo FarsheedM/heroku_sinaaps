@@ -15,10 +15,12 @@ import com.avaje.ebean.Model;
 import com.avaje.ebean.Model.Finder;
 
 @Entity
+@Table(name = "`user`")
 public class User extends Model{
 	
 	@Id
 	@Required
+	@Column(name="email")
 	public String email;
 	@Required
 	public String fName;
